@@ -7,7 +7,7 @@ apt-get update
 #apt-get -y --force-yes upgrade
 
 # install basic prerequisite packages
-apt-get -y install ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb build-essential wget ssl-cert git-core xfsprogs
+apt-get -y install ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb build-essential wget ssl-cert git-core xfsprogs htop
 
 # compile rubygems from source
 cd /tmp
@@ -19,13 +19,12 @@ ln -sfv /usr/bin/gem1.8 /usr/bin/gem
 
 # install check and ohai
 gem sources -a http://gems.opscode.com
-gem install ohai --no-rdoc --no-ri
-gem install chef --no-rdoc --no-ri
+gem install ohai chef --no-rdoc --no-ri
 
 # clone tokumine chef repo
 cd /tmp
 git clone http://github.com/tokumine/ppe-cookbooks.git
-cd ppe-cookbooks
+cd /tmp/ppe-cookbooks
 
 # kick off various different server configs depending on the server
 # replace .json with the type of server you want to make
