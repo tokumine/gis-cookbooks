@@ -25,15 +25,7 @@ remote_file "download_starspan" do
   source "http://github.com/tokumine/Starspan/tarball/1.0.08g"
 end
  
-script "install_starspan" do
-  interpreter "bash"
+bash "install_starspan" do
   user "root"
   cwd "/tmp"
-  code <<-EOH    
-  tar zxvf starspan.tar.gz
-  cd starspan
-  ./configure
-  make
-  make install
-  EOH
 end 
