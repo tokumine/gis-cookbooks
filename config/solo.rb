@@ -11,3 +11,5 @@ file_cache_path    "/var/chef/cookbooks"
 #recipe_url   "http://chef.example.com/cookbooks.tar.gz"
 
 Mixlib::Log::Formatter.show_time = false
+
+cookbook_path File.dirname(__FILE__) + "/../cookbooks"

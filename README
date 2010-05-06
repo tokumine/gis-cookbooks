@@ -1,5 +1,8 @@
-This is a blank repository you can use as a starting point for your
-local chef configuration. For full details on the parts aside from
-information contained in the README files, see the Chef wiki document
+h1. Basic chef scripts for setting up the servers for protectedpla.net
 
-http://wiki.opscode.com/display/chef/Chef+Repository
+Currently sets up:
+
+* web boxes (nginx + REE)
+* database (postgres 8.4 + postgis 1.5.1)
+* utility (sphinx + memcache)
+
