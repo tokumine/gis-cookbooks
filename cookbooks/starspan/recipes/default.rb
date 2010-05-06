@@ -27,13 +27,12 @@ end
  
 bash "install_starspan" do
   user "root"
-    cwd "/tmp"
-    code <<-EOH    
-    tar zxvf starspan.tar.gz
-    cd starspan
-    ./configure
-    make
-    make install
-    EOH
-  end
+  cwd "/tmp"
+  code <<-EOH    
+  tar zxvf starspan.tar.gz
+  cd starspan
+  ./configure
+  make
+  make install
+  EOH
 end 
