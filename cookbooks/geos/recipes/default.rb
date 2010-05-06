@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: gdal
+# Cookbook Name:: geos
 # Recipe:: default
 #
 # Copyright 2010, ProtectedPlanet.net
@@ -16,6 +16,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
- 
-package 'libgdal1-1.6.0'
-package 'libgdal1-dev'
+package "libgeos-3.1.0" 
+package "libgeos-dev"

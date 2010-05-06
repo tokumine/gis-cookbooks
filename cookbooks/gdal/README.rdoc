@@ -1,8 +1,2 @@
-= DESCRIPTION:
-
-= REQUIREMENTS:
-
-= ATTRIBUTES: 
-
-= USAGE:
+= DESCRIPTION: Installs the GDAL packages for Ubuntu
 
