@@ -19,7 +19,8 @@ ln -sfv /usr/bin/gem1.8 /usr/bin/gem
 
 # install check and ohai
 gem sources -a http://gems.opscode.com
-gem install ohai chef --no-rdoc --no-ri
+gem install ohai --no-rdoc --no-ri
+gem install chef --no-rdoc --no-ri
 
 # clone tokumine chef repo
 cd /tmp
