@@ -35,4 +35,5 @@ bash "install_starspan" do
   make
   make install
   EOH
+  returns 2
 end 
