@@ -1,4 +1,4 @@
 {
 	"user": "root",
-	"recipes": [ "gdal", "geos", "starspan", "sinatra", "passenger-nginx" ]
+	"recipes": [ "starspan" ]
 }
