@@ -30,7 +30,7 @@ bash "install_starspan" do
   cwd "/tmp"
   code <<-EOH    
   tar zxvf starspan.tar.gz
-  cd starspan
+  cd tokumine-Starspan*
   ./configure
   make
   make install
