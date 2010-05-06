@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: starspan
+# Cookbook Name:: ssh
 # Recipe:: default
 #
 # Copyright 2010, ProtectedPlanet.net
@@ -16,24 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include_recipe 'ssh'
-include_recipe 'gdal'
-include_recipe 'geos'
 
-remote_file "download_starspan" do
-  path "/tmp/starspan.tar.gz"
-  source "http://github.com/tokumine/Starspan/tarball/1.0.08g"
+template "/etc/ssh/ssh_config" do
+  source "ssh_config.erb"
+  mode 0644
+  owner "root"
+  group "root"
 end
- 
-bash "install_starspan" do
-  user "root"
-    cwd "/tmp"
-    code <<-EOH    
-    tar zxvf starspan.tar.gz
-    cd starspan
-    ./configure
-    make
-    make install
-    EOH
-  end
-end 

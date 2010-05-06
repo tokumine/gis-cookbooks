@@ -23,7 +23,7 @@ gem install ohai chef --no-rdoc --no-ri
 
 # clone tokumine chef repo
 cd /tmp
-git clone git@github.com:tokumine/ppe-cookbooks.git
+git clone http://github.com/tokumine/ppe-cookbooks.git
 cd ppe-cookbooks
 
 # kick off various different server configs depending on the server
