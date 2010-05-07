@@ -145,7 +145,7 @@ directory "#{node[:nginx][:dir]}/sites-enabled"
 
 #ADD PASSENGER SPECIFICS TO THE NGINX LOAD PATH
 template node[:nginx][:conf_dir] + "/passenger.conf" do
-  source "nginx.conf.erb"
+  source "passenger.conf.erb"
   owner "root"
   group "root"
   mode 0755
