@@ -7,7 +7,7 @@ apt-get update
 #apt-get -y --force-yes upgrade
 
 # install basic prerequisite packages
-apt-get -y install ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb build-essential wget ssl-cert git-core xfsprogs htop
+apt-get -y install htop ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb build-essential wget ssl-cert git-core xfsprogs 
 
 # compile rubygems from source
 cd /tmp
@@ -35,4 +35,4 @@ cd /tmp/ppe-cookbooks
 # starspan.json			- configure starspan
 # loadbalancer.json	- TBD
 #
-/usr/bin/chef-solo -c config/solo.rb -j server/starspan.json >> /var/log/chef.log
+/usr/bin/chef-solo -c config/solo.rb -j server/starspan.json > /var/log/chef.log
