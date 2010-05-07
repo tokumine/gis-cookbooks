@@ -25,6 +25,7 @@ remote_file "download_starspan" do
   source "http://github.com/tokumine/Starspan/tarball/1.0.08g"
 end
  
+ # remove with dpkg -r starspan
 bash "install_starspan" do
   user "root"
   cwd "/tmp"
@@ -33,7 +34,7 @@ bash "install_starspan" do
   cd tokumine-Starspan*
   ./configure
   make
-  make install
+  checkinstall --pkgname starspan --pkgversion 1.0.08g-src --default 
   EOH
   returns 2
   not_if { File.exists? "/tmp/starspan.tar.gz"}
