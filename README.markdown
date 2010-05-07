@@ -18,9 +18,9 @@ How to use with AWS?
 ---------------------
 These recipes have been tested with the ubuntu 10.04 EBS image. 
 
-The AMI tested is: *ami-714ba518*
+The AMI tested is: **ami-714ba518**
 
-Look at boot.sh, edit the last line and paste it into the User Data form field when you're filling in the server details. The server will bootstrap itself and install the works.
+Look at boot.sh, edit the last line and paste it into the **User Data** form field when you're filling in the server details. The server will bootstrap itself and install the works.
 
 After a while, visit the URL for the box and you'll find more details there.
 
