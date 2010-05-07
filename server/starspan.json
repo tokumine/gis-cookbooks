@@ -1,4 +1,4 @@
 {
 	"user": "root",
-	"recipes": [ "starspan", "passenger", "sinatra" ]
+	"recipes": [ "starspan", "passenger", "sinatra", "emacs" ]
 }
