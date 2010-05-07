@@ -23,8 +23,8 @@ gem install ohai chef --no-rdoc --no-ri
 
 # clone tokumine chef repo
 cd /tmp
-git clone http://github.com/tokumine/ppe-cookbooks.git
-cd /tmp/ppe-cookbooks
+git clone http://github.com/tokumine/gis-cookbooks.git
+cd /tmp/gis-cookbooks
 
 # kick off various different server configs depending on the server
 # replace .json with the type of server you want to make
