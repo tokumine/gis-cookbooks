@@ -58,6 +58,6 @@ compile_options = ["--conf-path=/etc/nginx/nginx.conf",
 
 execute "compile nginx with passenger" do
   command "passenger-install-nginx-module --auto --prefix=/usr --nginx-source-dir=#{nginx_path} --extra-configure-flags=\"#{compile_options}\""
-  notifies :restart, resources(:service => "nginx")
+  #notifies :restart, resources(:service => "nginx")
   #not_if "nginx -V | grep passenger-#{node[:passenger][:nginx][:nginx_version]}"
 end
