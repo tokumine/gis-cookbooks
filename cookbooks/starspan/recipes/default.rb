@@ -36,4 +36,5 @@ bash "install_starspan" do
   make install
   EOH
   returns 2
+  notif { File.exists? "/tmp/starspan.tar.gz"}
 end 
