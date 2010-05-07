@@ -40,3 +40,5 @@ Todo
 Note
 -----
 This is the first time I've used Chef, so there are probably lots of no-no's about the way I'm going about using it. Comments welcome!
+
+Draws heavily from jsierles 37s_cookbooks (http://github.com/37signals/37s_cookbooks).
