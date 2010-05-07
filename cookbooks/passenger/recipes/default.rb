@@ -153,25 +153,13 @@ template node[:nginx][:conf_dir] + "/passenger.conf" do
 end
 
 #PREP BASIC WWW LOCATION
-directory node[:web][:dir] do
+default_site = "#{node[:web][:dir]}/#{node[:web][:vhosts]}/#{node[:web][:default_site]}"
+directory default_site do
   mode 0755
   owner node[:nginx][:user]
   action :create
-  not_if "test -d #{node[:web][:dir]}"
-end
-
-directory node[:web][:vhosts] do
-  mode 0755
-  owner node[:nginx][:user]
-  action :create
-  not_if "test -d #{node[:web][:vhosts]}"
-end
-
-directory node[:web][:default_site] do
-  mode 0755
-  owner node[:nginx][:user]
-  action :create
-  not_if "test -d #{node[:web][:default_site]}"
+  recursive true  
+  not_if "test -d #{default_site}"
 end
 
 #ADD BASIC SITE
@@ -183,7 +171,7 @@ template node[:nginx][:dir] + "/sites-available/#{node[:web][:default_site]}" do
 end
 
 #ADD BASIC HELLO WORLD
-template "#{node[:web][:dir]}/#{node[:web][:vhosts]}/#{node[:web][:default_site]}/index.html" do
+template "#{default_site}/index.html" do
   source "index.html.erb"
   owner node[:nginx][:user]
   owner node[:nginx][:user]
