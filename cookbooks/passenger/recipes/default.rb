@@ -202,6 +202,7 @@ template "#{default_site}/public/app.rb" do
   owner node[:nginx][:user]
   owner node[:nginx][:user]
   mode 0755
+  notifies :restart, resources(:service => "nginx")
 end
 
 #ENABLE THE SITE
