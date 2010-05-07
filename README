@@ -1,8 +1,0 @@
-h1. Basic chef scripts for setting up the servers for protectedpla.net
-
-Currently sets up:
-
-* web boxes (nginx + REE)
-* database (postgres 8.4 + postgis 1.5.1)
-* utility (sphinx + memcache)
-
