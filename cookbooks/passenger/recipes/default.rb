@@ -56,6 +56,7 @@ compile_options = ["--conf-path=/etc/nginx/nginx.conf",
                    "--with-http_geoip_module",
                    "--with-file-aio"].join(" ")
 
+
 execute "compile nginx with passenger" do
   command "passenger-install-nginx-module --auto --prefix=/usr --nginx-source-dir=#{nginx_path} --extra-configure-flags=\"#{compile_options}\""
   #notifies :restart, resources(:service => "nginx")
@@ -78,4 +79,75 @@ service "nginx" do
   supports :status => true, :restart => true, :reload => true
 end
 
+directory "/var/lib/nginx" do
+  owner "root"
+  group "root"
+  mode "0755"
+  action :create
+  not_if "test -d /var/lib/nginx"
+end
 
+#CREATE THE CONF.D DIRECTORY
+directory "#{node[:nginx][:conf_dir]}" do
+  owner "root"
+  group "root"
+  mode "0755"
+  action :create
+  not_if "test -d #{node[:nginx][:conf_dir]}"
+end
+
+#CREATE NGINX LOG
+directory node[:nginx][:log_dir] do
+  mode 0755
+  owner node[:nginx][:user]
+  action :create
+  not_if "test -d #{node[:nginx][:log_dir]}"
+end
+
+
+#ENABLE/DISABLE SITES
+%w{nxensite nxdissite}.each do |nxscript|
+  template "/usr/sbin/#{nxscript}" do
+    source "#{nxscript}.erb"
+    mode 0755
+    owner "root"
+    group "root"
+  end
+end
+
+#CREATE NGINX USER
+execute "add nginx user" do
+  command "adduser --system --no-create-home --disabled-login --disabled-password --group #{node[:nginx][:user]}"
+end
+
+#SETUP NGINX CONF FILE
+template "nginx.conf" do
+  path "#{node[:nginx][:dir]}/nginx.conf"
+  source "nginx.conf.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  notifies :reload, resources(:service => "nginx")
+end
+
+directory "#{node[:nginx][:dir]}/helpers"
+
+# helpers to be included in your vhosts
+node[:nginx][:helpers].each do |h|
+  template "#{node[:nginx][:dir]}/helpers/#{h}.conf" do
+    notifies :reload, resources(:service => "nginx")
+  end
+end
+
+#make sites available and sites-enabled
+directory "#{node[:nginx][:dir]}/sites-available"
+directory "#{node[:nginx][:dir]}/sites-enabled"
+
+#ADD PASSENGER SPECIFICS TO THE NGINX LOAD PATH
+template node[:nginx][:conf_dir] + "/passenger.conf" do
+  source "nginx.conf.erb"
+  owner "root"
+  group "root"
+  mode 0755
+  notifies :restart, resources(:service => "nginx")
+end
