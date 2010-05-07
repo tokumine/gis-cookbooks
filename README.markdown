@@ -1,5 +1,5 @@
-Basic Ubuntu 10.04 Ruby/GIS chef cookbooks
-==========================================
+Ubuntu 10.04 Ruby/GIS chef cookbooks
+====================================
 
 Has cookbooks for
 
@@ -16,7 +16,9 @@ Currently has full box setup for:
 
 How to use with AWS?
 ---------------------
-These recipes have been tested with the ubuntu 10.04 EBS image. Why EBS? no reason really, just I feel better that way. The AMI I've used is ami-714ba518
+These recipes have been tested with the ubuntu 10.04 EBS image. 
+
+The AMI tested is: *ami-714ba518*
 
 Look at boot.sh, edit the last line and paste it into the User Data form field when you're filling in the server details. The server will bootstrap itself and install the works.
 
@@ -38,4 +40,3 @@ Todo
 Note
 -----
 This is the first time I've used Chef, so there are probably lots of no-no's about the way I'm going about using it. Comments welcome!
-
