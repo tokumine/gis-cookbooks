@@ -151,3 +151,47 @@ template node[:nginx][:conf_dir] + "/passenger.conf" do
   mode 0755
   notifies :restart, resources(:service => "nginx")
 end
+
+#PREP BASIC WWW LOCATION
+directory node[:web][:dir] do
+  mode 0755
+  owner node[:nginx][:user]
+  action :create
+  not_if "test -d #{node[:web][:dir]}"
+end
+
+directory node[:web][:vhosts] do
+  mode 0755
+  owner node[:nginx][:user]
+  action :create
+  not_if "test -d #{node[:web][:vhosts]}"
+end
+
+directory node[:web][:default_site] do
+  mode 0755
+  owner node[:nginx][:user]
+  action :create
+  not_if "test -d #{node[:web][:default_site]}"
+end
+
+#ADD BASIC SITE
+template node[:nginx][:dir] + "/sites-available/#{node[:web][:default_site]}" do
+  source "#{node[:web][:default_site]}.erb"
+  owner "root"
+  group "root"
+  mode 0755
+end
+
+#ADD BASIC HELLO WORLD
+template "#{node[:web][:dir]}/#{node[:web][:vhosts]}/#{node[:web][:default_site]}/index.html" do
+  source "index.html.erb"
+  owner node[:nginx][:user]
+  owner node[:nginx][:user]
+  mode 0755
+end
+
+#ENABLE THE SITE
+execute "enable the default site"
+ command "nxensite #{node[:web][:default_site]}"
+ notifies :restart, resources(:service => "nginx")
+end
