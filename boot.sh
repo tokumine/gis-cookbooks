@@ -35,4 +35,4 @@ cd /tmp/gis-cookbooks
 # starspan.json			- configure starspan
 # loadbalancer.json	- TBD
 #
-/usr/bin/chef-solo -c config/solo.rb -j server/starspan.json > /var/log/chef.log
+/usr/bin/chef-solo -c config/solo.rb -j server/starspan.json >> /tmp/chef.log

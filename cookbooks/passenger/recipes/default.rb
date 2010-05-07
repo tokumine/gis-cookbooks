@@ -68,8 +68,7 @@ template "/etc/init.d/nginx start script" do
   source "start_script.erb"
   owner "root"
   group "root"
-  mode 0755
-  notifies :start, resources(:service => "nginx")
+  mode 0755  
 end
 
 execute "add nginx startup script to server boot" do 
@@ -77,7 +76,7 @@ execute "add nginx startup script to server boot" do
 end
 
 service "nginx" do
-  supports :status => true, :restart => true, :reload => true
+  supports :status => true, :restart => true, :reload => true  
 end
 
 directory "/var/lib/nginx" do
@@ -86,6 +85,7 @@ directory "/var/lib/nginx" do
   mode "0755"
   action :create
   not_if "test -d /var/lib/nginx"
+  notifies :start, resources(:service => "nginx")
 end
 
 #CREATE THE CONF.D DIRECTORY
