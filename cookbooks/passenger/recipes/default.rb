@@ -69,6 +69,7 @@ template "/etc/init.d/nginx start script" do
   owner "root"
   group "root"
   mode 0755
+  notifies :start, resources(:service => "nginx")
 end
 
 execute "add nginx startup script to server boot" do 
