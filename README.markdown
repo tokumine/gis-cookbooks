@@ -1,5 +1,5 @@
-Ubuntu 10.04 Ruby/GIS chef cookbooks
-====================================
+Ubuntu 10.04 GIS (and Ruby/web) chef cookbooks
+==============================================
 
 Has cookbooks for
 
