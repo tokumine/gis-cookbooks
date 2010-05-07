@@ -191,7 +191,7 @@ template "#{node[:web][:dir]}/#{node[:web][:vhosts]}/#{node[:web][:default_site]
 end
 
 #ENABLE THE SITE
-execute "enable the default site"
+execute "enable the default site" do
  command "nxensite #{node[:web][:default_site]}"
  notifies :restart, resources(:service => "nginx")
 end
