@@ -162,6 +162,23 @@ directory default_site do
   not_if "test -d #{default_site}"
 end
 
+directory "#{default_site}/public" do
+  mode 0755
+  owner node[:nginx][:user]
+  action :create
+  recursive true  
+  not_if "test -d #{default_site}/public"
+end
+
+directory "#{default_site}/tmp" do
+  mode 0755
+  owner node[:nginx][:user]
+  action :create
+  recursive true  
+  not_if "test -d #{default_site}/tmp"
+end
+
+
 #ADD BASIC SITE
 template node[:nginx][:dir] + "/sites-available/#{node[:web][:default_site]}" do
   source "#{node[:web][:default_site]}.erb"
@@ -170,9 +187,18 @@ template node[:nginx][:dir] + "/sites-available/#{node[:web][:default_site]}" do
   mode 0755
 end
 
+#ADD BASIC CONFIG.RU
+template "#{default_site}/config.ru" do
+  source "config.ru.erb"
+  owner node[:nginx][:user]
+  owner node[:nginx][:user]
+  mode 0755
+end
+
+
 #ADD BASIC HELLO WORLD
-template "#{default_site}/index.html" do
-  source "index.html.erb"
+template "#{default_site}/public/app.rb" do
+  source "app.rb.erb"
   owner node[:nginx][:user]
   owner node[:nginx][:user]
   mode 0755

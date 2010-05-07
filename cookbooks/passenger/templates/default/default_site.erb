@@ -3,9 +3,6 @@ server {
   server_name  localhost;
 
   access_log  <%= @node[:nginx][:log_dir] %>/localhost.access.log;
-
-  location / {
-    root   <%= @node[:web][:dir] %>/<%= @node[:web][:vhosts] %>/<%= @node[:web][:default_site] %>;
-    index  index.html index.htm;
-  }
-}
+	root <%= @node[:web][:dir] %>/<%= @node[:web][:vhosts] %>/<%= @node[:web][:default_site] %>/public;
+  passenger_enabled on;	
+}       
