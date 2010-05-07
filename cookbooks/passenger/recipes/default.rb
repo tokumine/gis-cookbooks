@@ -61,3 +61,13 @@ execute "compile nginx with passenger" do
   #notifies :restart, resources(:service => "nginx")
   not_if { File.exists? "/usr/sbin/nginx"}
 end
+
+remote_file "get nginx start file" do
+  path "/etc/init.d/nginx"
+  source "http://library.linode.com/web-servers/nginx/installation/reference/init-deb.sh"
+  mode 0755
+end
+
+execute "add nginx startup script to server boot" do 
+  command "/usr/sbin/update-rc.d -f nginx defaults"
+end  
