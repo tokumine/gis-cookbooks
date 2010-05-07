@@ -35,4 +35,4 @@ cd /tmp/ppe-cookbooks
 # starspan.json			- configure starspan
 # loadbalancer.json	- TBD
 #
-/usr/bin/chef-solo -c config/solo.rb -j server/starspan.json
+/usr/bin/chef-solo -c config/solo.rb -j server/starspan.json >> /var/log/chef.log
