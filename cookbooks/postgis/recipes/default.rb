@@ -25,6 +25,8 @@ include_recipe 'postgres'
 package 'postgis'
 package 'postgresql-8.4-postgis'
 
+
+
 # BASIC GIS TEMPLATE SETUP
 bash "configure postgres" do
   user "postgres"  
@@ -38,11 +40,10 @@ bash "configure postgres" do
   not_if { `psql -d template_postgis -U postgres -c "select * from pg_tables where schemaname='public'" | grep 'spatial_ref_sys'`}
 end
 
-
-#CONFIGURE PG CONFIG FILES HERE - FIREWALL FOR EC2 FILES
 # create non-postgres user
 # allow postgres users to connect from other AWS
 # configure memory use in a config file depending on memory useage
+
 
 
 

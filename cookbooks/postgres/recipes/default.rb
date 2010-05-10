@@ -18,6 +18,41 @@
 #
 package "postgresql-8.4"
 package "postgresql-server-dev-8.4"
+gem_package "pg"
 
-#WORK OUT HOW TO SET PASSWORD HERE
-#SETUP FOR ACCESS OVER EC2 IP's WITH PASSWORDS
+service "postgresql" do
+  service_name "postgresql-8.3"
+  supports :restart => true, :status => true, :reload => true
+  action :nothing
+end
+
+# Allow any user to connect to postgres
+# SETUP FOR ACCESS OVER EC2 IP's WITH PASSWORDS
+template "/etc/postgresql/8.4/main/pg_hba.conf" do
+  source "pg_hba.conf.erb"
+  owner "postgres"
+  group "postgres"
+  mode 0600
+  notifies :reload, resources(:service => "postgresql")
+end
+
+# Expand memory that is available to postgres, good for postgres only boxes
+memory = `cat /proc/meminfo | grep "MemTotal"`.match(/\d+/).to_s.to_i * 1024
+shared_memory = memory / 3
+current_shared_memory = File.read("/proc/sys/kernel/shmmax").to_i
+execute "setup-shmmax" do
+  command "echo #{shared_memory} > /proc/sys/kernel/shmmax"
+  action :run
+  only_if { shared_memory > current_shared_memory }
+end
+
+template "/etc/postgresql/8.4/main/postgresql.conf" do
+  source "postgresql.conf.erb"
+  mode 0644
+  owner "postgres"
+  group "postgres"  
+	variables(
+		:ram_mb => memory / 1024 / 1024
+	)
+	notifies :restart, resources(:service => "postgresql")  
+end
