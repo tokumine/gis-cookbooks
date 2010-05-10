@@ -7,7 +7,15 @@ apt-get update
 #apt-get -y --force-yes upgrade
 
 # install basic prerequisite packages
-apt-get -y install htop ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb build-essential wget ssl-cert git-core xfsprogs 
+apt-get -y install htop ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb build-essential wget ssl-cert git-core xfsprogs libreadline5-dev
+
+# TODO install REE and configure as the base Ruby interpreter
+# cd /tmp
+# wget http://rubyforge.org/frs/download.php/68719/ruby-enterprise-1.8.7-2010.01.tar.gz
+# tar zxvf ruby-enterprise-1.8.7-2010.01.tar.gz
+# cd ruby-enterprise-1.8.7-2010.01
+# ./installer
+
 
 # compile rubygems from source
 cd /tmp
