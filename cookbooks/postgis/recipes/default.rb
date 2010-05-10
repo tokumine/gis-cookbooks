@@ -16,7 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# postGIS 1.4
+
+# Install postGIS 1.4
 include_recipe 'gdal'
 include_recipe 'geos'
 include_recipe 'proj'
@@ -24,17 +25,17 @@ include_recipe 'postgres'
 package 'postgis'
 package 'postgresql-8.4-postgis'
 
-#DO ALL BASIC TEMPLATE SETUP HERE
+# BASIC GIS TEMPLATE SETUP
 bash "configure postgres" do
   user "postgres"  
   code <<-EOH    
-  createdb -E UTF8 -O postgres template_postgis
-  createlang plpgsql -d template_postgis
-  psql -d template_postgis -f /usr/share/postgresql/8.4/contrib/postgis.sql
-  psql -d template_postgis -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
+  createdb -E UTF8 -O postgres -U postgres template_postgis
+  createlang plpgsql -U postgres -d template_postgis
+  psql -d template_postgis -U postgres -f /usr/share/postgresql/8.4/contrib/postgis.sql
+  psql -d template_postgis -U postgres -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
   ldconfig
   EOH
-  not_if { `psql -d template_postgis  -c "select * from pg_tables where schemaname='public'" | grep 'spatial_ref_sys'`}
+  not_if { `psql -d template_postgis -U postgres -c "select * from pg_tables where schemaname='public'" | grep 'spatial_ref_sys'`}
 end
 
 
