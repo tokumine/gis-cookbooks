@@ -41,7 +41,7 @@ bash "install postgis" do
   not_if { File.exists? "/tmp/postgis.tar.gz"}
 end
 
-service "postgresql" do
+service "postgresql-8.4" do
   supports :status => true, :restart => true, :reload => true  
 end
 
