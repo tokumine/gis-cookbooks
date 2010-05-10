@@ -23,7 +23,7 @@ include_recipe 'geos'
 remote_file "download_starspan" do
   path "/tmp/starspan.tar.gz"
   source "http://github.com/tokumine/Starspan/tarball/1.0.08g"
-end
+end 
  
  # remove with dpkg -r starspan
 bash "install_starspan" do

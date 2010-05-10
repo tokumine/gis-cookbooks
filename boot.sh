@@ -19,7 +19,7 @@ apt-get update
 #apt-get -y --force-yes upgrade
 
 # install basic prerequisite packages
-apt-get -y install htop build-essential wget ssl-cert git-core xfsprogs libreadline5-dev
+apt-get -y install htop build-essential wget ssl-cert git-core xfsprogs libreadline5-dev checkinstall
 # USING REE NOW. ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb
 
 # install REE and configure as the base Ruby interpreter
@@ -60,4 +60,6 @@ cd /tmp/gis-cookbooks
 # starspan.json			- configure starspan
 # loadbalancer.json	- TBD
 #
-/usr/bin/chef-solo -c config/solo.rb -j server/starspan.json >> /var/log/chef.log
+/usr/local/bin/chef-solo -c config/solo.rb -j server/starspan.json >> /var/log/chef.log
+
+# NOTE /usr/bin/chef-solo if non REE system
