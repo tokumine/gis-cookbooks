@@ -22,20 +22,21 @@ The AMI tested is: **ami-714ba518**
 
 Look at boot.sh, edit the last line and paste it into the **User Data** form field when you're filling in the server details. The server will bootstrap itself and install the works.
 
-After a while, visit the URL for the box and you'll find more details there.
+After a while, visit the URL for the box in a browser and you'll find more details about the box there, along with it's chef output
 
 Todo
 -----
 
-* web boxes (nginx + REE)
+* web boxes (nginx + passenger)
 * database (postgres 8.4 + postgis 1.5.1)
-* utility (sphinx + memcache)
+* utility (sphinx + memcached)
 * configure backup of data/logs to S3
 * Restore commands
-* Move web server directories onto the temporary partition on EC2 boxes
 * Configure EBS drives
 * Setup Amazon load balancer and make servers join pool
 * monitoring (nagios/monit/bluepill?)
+* add some hints for how to specify the size of EBS boxes initially
+* logrotate
 
 Note
 -----
