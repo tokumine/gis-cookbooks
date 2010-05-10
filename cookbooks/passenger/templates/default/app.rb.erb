@@ -1,6 +1,10 @@
 get '/' do
-  "<h1 style='font-family: arial;'>Sinatra has taken the stage</h1><br>
+  output = "<h1 style='font-family: arial;'>Sinatra has taken the stage</h1><br>
 	<p>You'll find this file (app.rb) at /var/www/vhosts/default_site/public</p>
-	<p>edit me and then /etc/init.d/nginx restart</p>
-	"
+	<p>edit me and then /etc/init.d/nginx restart</p>	
+	<h3>Chef log</h3>
+	"	
+	chef_log = File.open('/var/log/chef.log')
+	chef_log.each{|line| output << "line</br>"}
+	output
 end

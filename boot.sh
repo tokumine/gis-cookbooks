@@ -7,21 +7,29 @@ apt-get update
 #apt-get -y --force-yes upgrade
 
 # install basic prerequisite packages
-apt-get -y install htop ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb build-essential wget ssl-cert git-core xfsprogs libreadline5-dev
+apt-get -y install htop build-essential wget ssl-cert git-core xfsprogs libreadline5-dev
+# USING REE NOW. ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb
 
-# TODO install REE and configure as the base Ruby interpreter
-# cd /tmp
-# wget http://rubyforge.org/frs/download.php/68719/ruby-enterprise-1.8.7-2010.01.tar.gz
-# tar zxvf ruby-enterprise-1.8.7-2010.01.tar.gz
-# cd ruby-enterprise-1.8.7-2010.01
-# ./installer
+# install REE and configure as the base Ruby interpreter
+cd /tmp
+
+# 32-bit AMI's
+wget http://rubyforge.org/frs/download.php/68718/ruby-enterprise_1.8.7-2010.01_i386.deb
+dpkg -i ruby-enterprise_1.8.7-2010.01_i386.deb
+
+# # 64-bit AMI's
+# wget http://rubyforge.org/frs/download.php/68720/ruby-enterprise_1.8.7-2010.01_amd64.deb
+# dpkg -i ruby-enterprise_1.8.7-2010.01_amd64.deb
+
+# reload environment to start using REE after install
+source /etc/environment
 
 
 # compile rubygems from source
 cd /tmp
 wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.6.tgz
 tar zxvf rubygems-1.3.6.tgz
-cd rubygems-1.3.6
+cd /tmp/rubygems-1.3.6
 ruby setup.rb
 ln -sfv /usr/bin/gem1.8 /usr/bin/gem
 

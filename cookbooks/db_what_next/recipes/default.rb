@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: sinatra
+# Cookbook Name:: db_what_next
 # Recipe:: default
 #
 # Copyright 2010, ProtectedPlanet.net
@@ -16,17 +16,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-gem_package 'rack' do
-  action :install
-  version "1.1.0"
-end
-
-gem_package 'rack' do
-  action :install
-  version "1.0.1"
-end
-
-gem_package 'sinatra' do
-  action :install
-  version "1.0"
-end

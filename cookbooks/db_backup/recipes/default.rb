@@ -16,3 +16,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+include_recipe 'postfix'
+
+gem_package "backup" do
+  action :install
+  version "2.3.1"
+end
+
+execute "initialise backup directory" do
+  command "backup --setup"
+end
+
+template "/opt/backup/config/backup.rb" do
+  source "backup.rb.erb"
+  echo "IMPORTANT: configure /opt/backup/config/backup.rb. See http://wiki.github.com/meskyanichi/backup/getting-started-unix"
+end
+
+cron "backup postgres" do
+  hour "1"
+  command "backup --run postgres"
+end
+
+
+
+
+
+
+
+  

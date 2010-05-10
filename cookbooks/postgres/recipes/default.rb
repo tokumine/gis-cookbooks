@@ -18,7 +18,10 @@
 #
 package "postgresql-8.4"
 package "postgresql-server-dev-8.4"
-gem_package "pg"
+gem_package "pg" do
+  action :install
+  version "0.9.0"
+end  
 
 service "postgresql" do
   service_name "postgresql-8.4"

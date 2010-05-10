@@ -1,0 +1,1 @@
+default.db_backup[:hostname]     = "postgres_box.com"
