@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 package "postgresql-8.4"
+package "postgresql-server-dev-8.4"
 
 #WORK OUT HOW TO SET PASSWORD HERE
 #SETUP FOR ACCESS OVER EC2 IP's WITH PASSWORDS
