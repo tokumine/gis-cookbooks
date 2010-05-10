@@ -36,5 +36,5 @@ bash "install_starspan" do
   make
   checkinstall --pkgname starspan --pkgversion 1.0.08g-src --default 
   EOH
-  not_if { `which starspan`.empty?}
+  only_if { `which starspan`.empty?}
 end 
