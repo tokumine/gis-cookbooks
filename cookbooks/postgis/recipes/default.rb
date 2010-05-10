@@ -34,7 +34,7 @@ bash "configure postgres" do
   psql -d template_postgis -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
   ldconfig
   EOH
-  #not_if { `which starspan`}
+  not_if { `psql -d template_postgis  -c "select * from pg_tables where schemaname='public'" | grep 'spatial_ref_sys'`}
 end
 
 
