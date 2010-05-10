@@ -1,14 +1,14 @@
 #!/bin/sh
-# S. Tokumine 2010
 # Chef-solo bootstrap script for Ubuntu Lucid 10.04 (ami-714ba518)
+# S. Tokumine 2010
 #
 # Run from the command line using the AWS EC2 API tools like:
 #
 # Base explanation
-# ec2-run-instances --block-device-mapping /dev/sda1=:DISK_IN_GB ami-714ba518 -f THIS_FILE
+# ec2-run-instances ami-714ba518 -f THIS_FILE
 # 
-# Example of a 50GB EBS server
-# ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh
+# Example of a 50GB EBS server with keypair and member of default and ppeutility security groups
+# ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k ppekey -g default -g ppeutility
 #
 # (assumes a working EC2 tools install - EC2_PRIVATE_KEY and EC2_CERT are set)
 
@@ -33,17 +33,14 @@ dpkg -i ruby-enterprise_1.8.7-2010.01_i386.deb
 # wget http://rubyforge.org/frs/download.php/68720/ruby-enterprise_1.8.7-2010.01_amd64.deb
 # dpkg -i ruby-enterprise_1.8.7-2010.01_amd64.deb
 
-# reload environment to start using REE after install
-source /etc/environment
 
-
-# compile rubygems from source
-cd /tmp
-wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.6.tgz
-tar zxvf rubygems-1.3.6.tgz
-cd /tmp/rubygems-1.3.6
-ruby setup.rb
-ln -sfv /usr/bin/gem1.8 /usr/bin/gem
+# compile rubygems from source (Only if don't use REE deb)
+#cd /tmp
+#wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.6.tgz
+#tar zxvf rubygems-1.3.6.tgz
+#cd /tmp/rubygems-1.3.6
+#ruby setup.rb
+#ln -sfv /usr/bin/gem1.8 /usr/bin/gem
 
 # install check and ohai
 gem sources -a http://gems.opscode.com
