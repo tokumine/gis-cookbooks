@@ -37,7 +37,7 @@ bash "install postgis" do
   make
   checkinstall --pkgname postgis-src --pkgversion #{node[:postgis][:version]}-src --default 
   EOH
-  returns 2
+  #returns 2
   #not_if { File.exists? "/tmp/postgis.tar.gz"}
 end
 
