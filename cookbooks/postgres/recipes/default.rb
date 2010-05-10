@@ -21,7 +21,7 @@ package "postgresql-server-dev-8.4"
 gem_package "pg"
 
 service "postgresql" do
-  service_name "postgresql-8.3"
+  service_name "postgresql-8.4"
   supports :restart => true, :status => true, :reload => true
   action :nothing
 end
