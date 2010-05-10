@@ -52,7 +52,7 @@
 #   You will also have to set "notify true" inside each backup block below to enable it for that particular backup
  notifier_settings do
    
-   to    "si@tinypla.net"
+   to    "<%= node[:db_backup][:notification_email]%>"
    from  "db_backup@<%= node[:db_backup][:hostname]%>"
    
    smtp do
@@ -66,20 +66,19 @@
    end 
  end
 
-#BASIC POSTGRES BACKUP - REPLACE S3 details!
 backup "postgres" do
   adapter :custom do
     commands "pg_dumpall > :tmp_path/postgresql_dump.sql"
 
 		storage :s3 do
-	    access_key_id     'access_key_id'
-	    secret_access_key 'secret_access_key'
-	    bucket            '/bucket/ppe/backups/postgis/'
+	    access_key_id     '<%= node[:db_backup][:s3_access_key_id]%>'
+	    secret_access_key '<%= node[:db_backup][:s3_secret_access_key]%>'
+	    bucket            '<%= node[:db_backup][:s3_bucket]%>'
 	    use_ssl           true
 	  end
 
-	  keep_backups 60
-	  notify true
+	  keep_backups <%= node[:db_backup][:keep_backups_for]%>
+	  notify <%= node[:db_backup][:send_notification]%>
 
   end
 end

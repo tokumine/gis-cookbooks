@@ -22,6 +22,12 @@ The AMI tested is: **ami-714ba518**
 
 Look at boot.sh, edit the last line and paste it into the **User Data** form field when you're filling in the server details. The server will bootstrap itself and install the works.
 
+If you have the EC2 API tools installed, you can run it be using the following:
+
+    ec2-run-instances --block-device-mapping /dev/sda1=:[EBS disk size, eg: 100] ami-714ba518 -f [path to boot.sh]
+
+The above snippet will create a 100GB EBS instance for example
+
 After a while, visit the URL for the box in a browser and you'll find more details about the box there, along with it's chef output
 
 Todo

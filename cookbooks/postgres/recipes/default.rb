@@ -59,3 +59,5 @@ template "/etc/postgresql/8.4/main/postgresql.conf" do
 	)
 	notifies :restart, resources(:service => "postgresql")  , :immediately
 end
+
+echo "[POSTGRESQL] Update the postgres users password. ***CURRENTLY EMPTY***"

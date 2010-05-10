@@ -1,5 +1,12 @@
 #!/bin/sh
-# Chef scripts for Ubuntu Lucid 10.04 
+# S. Tokumine 2010
+# Chef-solo bootstrap script for Ubuntu Lucid 10.04 (ami-714ba518)
+#
+# Run from the command line using the AWS EC2 API tools like:
+# ec2-run-instances --block-device-mapping /dev/sda1=:100 ami-714ba518 -f THIS_FILE
+#
+# (assumes a working EC2 tools install - EC2_PRIVATE_KEY and EC2_CERT are set)
+
 set -e -x
 
 # update apt
