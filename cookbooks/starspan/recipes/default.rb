@@ -37,5 +37,5 @@ bash "install_starspan" do
   checkinstall --pkgname starspan --pkgversion 1.0.08g-src --default 
   EOH
   returns 2
-  not_if { File.exists? "/tmp/starspan.tar.gz"}
+  not_if { `which starspan`}
 end 

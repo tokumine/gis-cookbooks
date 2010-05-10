@@ -26,7 +26,7 @@ remote_file "download postgis" do
   source "http://postgis.refractions.net/download/postgis-#{node[:postgis][:version]}.tar.gz"
 end
  
- # remove with dpkg -r starspan
+ # remove with dpkg -r postgis
 bash "install postgis" do
   user "root"
   cwd "/tmp"
@@ -38,7 +38,7 @@ bash "install postgis" do
   checkinstall --pkgname postgis-src --pkgversion #{node[:postgis][:version]}-src --default 
   EOH
   returns 2
-  not_if { File.exists? "/tmp/postgis.tar.gz"}
+  #not_if { File.exists? "/tmp/postgis.tar.gz"}
 end
 
 service "postgresql-8.4" do
