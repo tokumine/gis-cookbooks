@@ -32,7 +32,7 @@ bash "install postgis" do
   cwd "/tmp"
   code <<-EOH    
   tar zxvf postgis.tar.gz
-  cd postgis*
+  cd /tmp/postgis*
   ./configure
   make
   checkinstall --pkgname postgis-src --pkgversion #{node[:postgis][:version]}-src --default 

@@ -31,7 +31,7 @@ bash "install_starspan" do
   cwd "/tmp"
   code <<-EOH    
   tar zxvf starspan.tar.gz
-  cd tokumine-Starspan*
+  cd /tmp/tokumine-Starspan*
   ./configure
   make
   checkinstall --pkgname starspan --pkgversion 1.0.08g-src --default 
