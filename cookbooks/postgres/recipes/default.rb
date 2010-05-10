@@ -33,7 +33,7 @@ template "/etc/postgresql/8.4/main/pg_hba.conf" do
   owner "postgres"
   group "postgres"
   mode 0600
-  notifies :reload, resources(:service => "postgresql")
+  notifies :restart, resources(:service => "postgresql"), :immediately
 end
 
 # Expand memory that is available to postgres, good for postgres only boxes
@@ -54,5 +54,5 @@ template "/etc/postgresql/8.4/main/postgresql.conf" do
 	variables(
 		:ram_mb => memory / 1024 / 1024
 	)
-	notifies :restart, resources(:service => "postgresql")  
+	notifies :restart, resources(:service => "postgresql")  , :immediately
 end
