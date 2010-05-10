@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: postgres
+# Cookbook Name:: postgres_client
 # Recipe:: default
 #
 # Copyright 2010, ProtectedPlanet.net
@@ -16,7 +16,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package "postgresql-8.4"
-
-#WORK OUT HOW TO SET PASSWORD HERE
-#SETUP FOR ACCESS OVER EC2 IP's WITH PASSWORDS
+package "postgresql-client-8.4"
+gem_package "pg"
