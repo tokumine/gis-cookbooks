@@ -20,30 +20,7 @@ include_recipe 'gdal'
 include_recipe 'geos'
 include_recipe 'proj'
 include_recipe 'postgres'
-
-remote_file "download postgis" do
-  path "/tmp/postgis.tar.gz"
-  source "http://postgis.refractions.net/download/postgis-#{node[:postgis][:version]}.tar.gz"
-end
- 
- # remove with dpkg -r postgis
-bash "install postgis" do
-  user "root"
-  cwd "/tmp"
-  code <<-EOH    
-  tar zxvf postgis.tar.gz
-  cd /tmp/postgis*
-  ./configure
-  make
-  checkinstall --pkgname postgis-src --pkgversion #{node[:postgis][:version]}-src --default 
-  EOH
-  #returns 2
-  #not_if { File.exists? "/tmp/postgis.tar.gz"}
-end
-
-service "postgresql-8.4" do
-  supports :status => true, :restart => true, :reload => true  
-end
+package 'postgis'
 
 #DO ALL BASIC TEMPLATE SETUP HERE
 
