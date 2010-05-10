@@ -24,11 +24,11 @@ Look at boot.sh, edit the last line and paste it into the **User Data** form fie
 
 If you have the EC2 API tools installed, you can run it be using the following:
 
-    ec2-run-instances --block-device-mapping /dev/sda1=:[EBS disk size, eg: 100] ami-714ba518 -f [path to boot.sh]
+    ec2-run-instances ami-714ba518 -f [path to boot.sh]
 
 If you are in the root of this git repo, and want to make a 100GB EBS instance for example, do:
 
-    ec2-run-instances --block-device-mapping /dev/sda1=:100 ami-714ba518 -f boot.sh
+    ec2-run-instances --block-device-mapping /dev/sda1=:100 ami-714ba518 -f boot.sh -k my_key -g my_sec_group
 
 After a while, visit the URL for the box in a browser and you'll find more details about the box there, along with it's chef output
 
