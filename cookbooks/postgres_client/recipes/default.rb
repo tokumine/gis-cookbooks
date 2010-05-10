@@ -17,4 +17,6 @@
 # limitations under the License.
 #
 package "postgresql-client-8.4"
+package "postgresql-server-dev-8.4"
+
 gem_package "pg"
