@@ -16,7 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package "postfix"
 
 execute "install postfix" do
   command "DEBIAN_FRONTEND=noninteractive apt-get install -y postfix"
@@ -25,5 +24,4 @@ end
 service "postfix" do
   service_name "postfix"
   supports :restart => true, :status => true, :reload => true
-  action :restart, :immediatley
 end
