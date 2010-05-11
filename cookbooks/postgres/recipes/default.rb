@@ -26,7 +26,6 @@ end
 service "postgresql" do
   service_name "postgresql-8.4"
   supports :restart => true, :status => true, :reload => true
-  action :nothing
 end
 
 # Allow any user to connect to postgres
