@@ -29,17 +29,16 @@ end
 
 template "/opt/backup/config/backup.rb" do
   source "backup.rb.erb"
-  echo "[BACKUPS] configure backups in /opt/backup/config/backup.rb"
-  echo "[BACKUPS] See http://wiki.github.com/meskyanichi/backup/getting-started-unix"  
 end
 
 cron "backup postgres" do
   hour "1"
   command "backup --run postgres"
-  echo "[BACKUPS] Postgres scheduled to backup to S3 at 1am daily"
 end
 
-
+log "[BACKUPS] configure backups in /opt/backup/config/backup.rb"
+log "[BACKUPS] See http://wiki.github.com/meskyanichi/backup/getting-started-unix"
+log "[BACKUPS] Postgres scheduled to backup to S3 at 1am daily"
 
 
 
