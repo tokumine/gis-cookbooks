@@ -1,4 +1,4 @@
 {
 	"user": "root",
-	"recipes": [ "postgres", "postgis", "db_backup", "db_what_next"]
+	"recipes": [ "postgres", "postgis", "db_backup", "db_what_next", "emacs"]
 }
