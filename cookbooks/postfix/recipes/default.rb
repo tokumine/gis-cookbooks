@@ -18,9 +18,7 @@
 #
 
 bash "install postfix" do
-  user "root"
-  cwd "/tmp"
-  command "DEBIAN_FRONTEND=noninteractive apt-get install -y postfix"  
+  code "DEBIAN_FRONTEND=noninteractive apt-get install -y postfix"  
 end  
 
 service "postfix" do
