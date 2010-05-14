@@ -28,7 +28,7 @@ package 'postgresql-8.4-postgis'
 
 
 # BASIC GIS TEMPLATE SETUP
-bash "configure postgres" do
+bash "configure postgis" do
   user "postgres"  
   code <<-EOH    
   createdb -E UTF8 -O postgres -U postgres template_postgis
@@ -37,7 +37,7 @@ bash "configure postgres" do
   psql -d template_postgis -U postgres -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
   ldconfig
   EOH
-  not_if { `psql -d template_postgis -U postgres -c "select * from pg_tables where schemaname='public'" | grep 'spatial_ref_sys'`}
+  not_if { `psql -U postgres -t -c "select count(*) from pg_catalog.pg_database where datname = 'template_postgis'" | grep 1`}
 end
 
 # create non-postgres user
