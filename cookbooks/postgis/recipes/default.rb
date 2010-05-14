@@ -37,7 +37,7 @@ bash "configure postgis" do
   psql -d template_postgis -U postgres -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
   ldconfig
   EOH
-  not_if { `psql -U postgres -t -c "select count(*) from pg_catalog.pg_database where datname = 'template_postgis'" | grep 1`}
+  not_if { `psql -U postgres -t -c "select count(*) from pg_catalog.pg_database where datname = 'template_postgis'"`.include? '1'}
 end
 
 # create non-postgres user
