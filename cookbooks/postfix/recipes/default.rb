@@ -17,9 +17,11 @@
 # limitations under the License.
 #
 
-execute "install postfix" do
-  command "DEBIAN_FRONTEND=noninteractive apt-get install -y postfix"
-end
+bash "install postfix" do
+  user "root"
+  cwd "/tmp"
+  command "DEBIAN_FRONTEND=noninteractive apt-get install -y postfix"  
+end  
 
 service "postfix" do
   service_name "postfix"
