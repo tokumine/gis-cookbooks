@@ -31,13 +31,13 @@ package 'postgresql-8.4-postgis'
 bash "configure postgis" do
   user "postgres"  
   code <<-EOH    
-  createdb -E UTF8 -O postgres -U postgres template_postgis
+  createdb  -T template0 -O postgres -U postgres -E UTF8 template_postgis
   createlang plpgsql -U postgres -d template_postgis
   psql -d template_postgis -U postgres -f /usr/share/postgresql/8.4/contrib/postgis.sql
   psql -d template_postgis -U postgres -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
   ldconfig
   EOH
-  #only_if { `psql -U postgres -t -c "select count(*) from pg_catalog.pg_database where datname = 'template_postgis'"`.include? '0'}
+  only_if { `psql -U postgres -t -c "select count(*) from pg_catalog.pg_database where datname = 'template_postgis'"`.include? '0'}
 end
 
 # create non-postgres user
