@@ -1,22 +1,23 @@
 #!/bin/sh
+set -e -x
 # Chef-solo bootstrap script for Ubuntu Lucid 10.04 (ami-714ba518)
 # S. Tokumine 2010
 #
 # Run from the command line using the AWS EC2 API tools like:
+# (assumes a working EC2 tools install - EC2_PRIVATE_KEY and EC2_CERT are set)
 #
 # Base explanation
 # ec2-run-instances ami-714ba518 -f THIS_FILE
 # 
 # Example of a 50GB EBS server with keypair and member of default and ppeutility security groups
 # ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k ppekey -g default -g ppeutility
-#
-# (assumes a working EC2 tools install - EC2_PRIVATE_KEY and EC2_CERT are set)
 
-set -e -x
+# resize disk to the size set in init line (see comments above)
+resize2fs /dev/sda1
 
 # update apt
 apt-get update
-#apt-get -y --force-yes upgrade
+#apt-get -y --force-yes upgrade # <--- not working due to some upgrades needing console input...
 
 # install basic prerequisite packages
 apt-get -y install htop build-essential wget ssl-cert git-core xfsprogs libreadline5-dev checkinstall

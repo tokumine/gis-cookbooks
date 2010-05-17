@@ -105,6 +105,16 @@ directory node[:nginx][:log_dir] do
   not_if "test -d #{node[:nginx][:log_dir]}"
 end
 
+#ROTATE NGINX LOG
+template "/etc/logrotate.d/nginx" do
+  source "nginx.logrotate.erb"
+  owner "root"
+  group "root"
+  mode 0755
+  backup false
+  action :create
+end
+
 
 #ENABLE/DISABLE SITES
 %w{nxensite nxdissite}.each do |nxscript|
