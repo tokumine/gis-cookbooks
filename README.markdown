@@ -1,4 +1,4 @@
-Ubuntu 10.04 GIS (and Ruby/web) chef cookbooks
+Ubuntu 10.04 Ruby/GIS Chef cookbooks
 ==============================================
 
 Make deploying Ruby/GIS apps simple and backed up on AWS. 
