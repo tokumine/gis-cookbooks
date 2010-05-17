@@ -19,7 +19,7 @@ What can it build?
 
 How to use with AWS Web Console?
 --------------------------------
-Edit the last line of boot.sh to define the server type you want and paste it into the **User Data** form field when you're filling in the server details. The server will bootstrap itself.
+Edit the last line of boot.sh to pick the server type & paste it into the **User Data**  field when making a new server. The server will bootstrap itself.
 
 How to use with EC2 API tools?
 --------------------------------
@@ -37,13 +37,9 @@ Todo
 * Amazon load balancer and join pool
 * monitoring (nagios/monit/bluepill?)
 
-Note2
-------
-
-
 Thanks to
 ----------
 * United Nations Environment Programme World Conservation Monitoring Centre
-* Vizzualty
+* Vizzuality
 * jsierles 37s_cookbooks (http://github.com/37signals/37s_cookbooks)
-* Heroku's Orionz ()
+* Heroku's Orionz bitfrost_recipes (http://github.com/orionz/bifrost-recipies)
