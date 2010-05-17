@@ -29,7 +29,7 @@ package 'postgresql-8.4-postgis'
 
 # BASIC GIS TEMPLATE SETUP
 bash "configure postgis" do
-  user "postgres"  
+  user "root"  
   code <<-EOH    
   createdb  -T template0 -O postgres -U postgres -E UTF8 template_postgis
   createlang plpgsql -U postgres -d template_postgis
