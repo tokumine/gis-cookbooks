@@ -9,7 +9,9 @@ Full box setup for:
 
 * web.json - rack box (REE, nginx, passenger, postgres connectors & sinatra)
 * database.json - PostGIS 1.4 box (REE, postgis 1.4, postgres 8.4, tuned postgres, GIS template, nightly backups to S3)
+* utility.json - Memcached and Sphinx ready for indexing as a remote search index
 * starspan.json - starspan rack box (REE, nginx, passenger, sinatra, gdal, geos & starspan)
+* full_stack.json - web.json + database.json + utility.json
 
 How to use with AWS?
 ---------------------
@@ -23,16 +25,15 @@ If you have the EC2 API tools installed, you can run it be using the following:
 
     ec2-run-instances ami-714ba518 -f [path to boot.sh]
 
-If you are in the root of this git repo, and want to make a 100GB EBS instance for example, do:
+If you are in the root of this git repo, and want to make a 50GB EBS instance for example, do:
 
-    ec2-run-instances --block-device-mapping /dev/sda1=:100 ami-714ba518 -f boot.sh -k my_key -g my_sec_group
+    ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k my_key -g my_sec_group
 
 After a while, visit the URL for the box in a browser and you'll find more details about the box there, along with it's chef output
 
 Todo
 -----
 
-* utility (sphinx + memcached)
 * Restore commands
 * Setup Amazon load balancer and make servers join pool
 * monitoring (nagios/monit/bluepill?)

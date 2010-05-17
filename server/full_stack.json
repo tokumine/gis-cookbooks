@@ -1,0 +1,14 @@
+{
+	"user": "root",
+	"recipes": [ "passenger", 
+							 "postgres_client",  
+							 "postgres", 
+							 "postgis", 
+							 "db_backup", 
+							 "db_what_next", 
+							 "general_gems", 
+							 "sinatra", 
+							 "emacs", 
+							 "sphinx", 
+							 "memcached" ]
+}
