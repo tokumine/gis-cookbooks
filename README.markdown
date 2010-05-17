@@ -9,11 +9,11 @@ Make deploying Ruby/GIS apps on AWS simple and safe.
 
 What can it build?
 ------------------
-* web.json - rack box (REE, nginx, passenger, postgres connectors & sinatra)
-* database.json - PostGIS 1.4 box (REE, postgis 1.4, postgres 8.4, tuned postgres, GIS template, nightly backups to S3)
+* web.json - rack (REE, nginx, passenger, postgres connectors & sinatra)
+* database.json - PostGIS 1.4 (REE, postgis 1.4, tuned postgres 8.4, GIS template, nightly S3 backups)
 * utility.json - Memcached and Sphinx ready for indexing as a remote search index
 * full_stack.json - web.json + database.json + utility.json
-* starspan.json - starspan rack box (REE, nginx, passenger, sinatra, gdal, geos & starspan)
+* starspan.json - starspan + rack (starspan is a highspeed raster analysis tool)
 
 **found in /server**
 
