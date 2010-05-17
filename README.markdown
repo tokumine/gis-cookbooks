@@ -3,9 +3,9 @@ Ubuntu 10.04 GIS (and Ruby/web) chef cookbooks
 
 Make deploying Ruby/GIS apps simple and backed up on AWS. 
 
-1. Targets **ubuntu 10.04 EBS**. (tested 32bit AMI: **ami-714ba518**. 64bit should be ok)
-2. Designed for **Chef Solo**. Nothing fancy. Simple.
-3. Uses debs where possible
+* Targets **ubuntu 10.04 EBS**. (tested 32bit AMI: **ami-714ba518**. 64bit should be ok)
+* Designed for **Chef Solo**. Nothing fancy. Simple.
+* Uses debs where possible
 
 What can it build?
 ------------------
