@@ -25,7 +25,7 @@ How to use with EC2 API tools?
 --------------------------------
 Make a 50GB EBS instance:
 
-    ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k my_key -g [my_sec_group]
+    $ ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k my_key -g [my_sec_group]
 
 Notes
 ------
