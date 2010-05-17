@@ -19,7 +19,7 @@ What can it build?
 
 How to use with AWS Web Console?
 --------------------------------
-Edit the last line of boot.sh to pick the server type & paste it into the **User Data**  field when making a new server. The server will bootstrap itself.
+Edit the last line of boot.sh to pick the server type & paste it all (boot.sh) into the **User Data**  field when making a new server. The server will bootstrap itself.
 
 How to use with EC2 API tools?
 --------------------------------
