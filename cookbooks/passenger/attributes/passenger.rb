@@ -1,8 +1,8 @@
 default.passenger[:nginx][:passenger_version] = "2.2.11"
 default.passenger[:nginx][:nginx_version] = "0.8.36"
-#default.passenger[:root_path] = "/usr/lib/ruby/gems/1.8/gems/passenger-2.2.11" 
-default.passenger[:root_path] = "/usr/local/lib/ruby/gems/1.8/gems/passenger-2.2.11" 
-default.passenger[:passenger_ruby] = "/usr/local/bin/ruby" 
+default.passenger[:root_path] = "/usr/lib/ruby/gems/1.8/gems/passenger-2.2.11" 
+#default.passenger[:root_path] = "/usr/local/lib/ruby/gems/1.8/gems/passenger-2.2.11" 
+default.passenger[:passenger_ruby] = "/usr/bin/ruby" 
 
 default.passenger[:rails_env] = "production"
 
