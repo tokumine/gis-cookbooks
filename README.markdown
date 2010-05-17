@@ -12,13 +12,15 @@ Has cookbooks for
 
 Currently has full box setup for:
 
-* starspan sinatra box (gdal, geos, starspan, nginx, passenger & sinatra)
+* web.json - normal rack box (REE, nginx, passenger, postgres connectors & sinatra)
+* starspan.json - starspan rack box (gdal, geos, starspan, REE, nginx, passenger & sinatra)
+* database.json - PostGIS 1.4 box (REE, postgis 1.4, postgres 8.4, tuned postgres, GIS template, nightly backups to S3)
 
 How to use with AWS?
 ---------------------
 These recipes have been tested with the ubuntu 10.04 EBS image. 
 
-The AMI tested is: **ami-714ba518**
+The AMI is tested on the 32 bit AMI: **ami-714ba518** (but will work on 64bit too)
 
 Look at boot.sh, edit the last line and paste it into the **User Data** form field when you're filling in the server details. The server will bootstrap itself and install the works.
 
@@ -35,16 +37,10 @@ After a while, visit the URL for the box in a browser and you'll find more detai
 Todo
 -----
 
-* web boxes (nginx + passenger)
-* database (postgres 8.4 + postgis 1.5.1)
 * utility (sphinx + memcached)
-* configure backup of data/logs to S3
 * Restore commands
-* Configure EBS drives
 * Setup Amazon load balancer and make servers join pool
 * monitoring (nagios/monit/bluepill?)
-* add some hints for how to specify the size of EBS boxes initially
-* logrotate
 
 Note
 -----

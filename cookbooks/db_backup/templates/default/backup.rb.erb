@@ -68,8 +68,8 @@
 
 backup "postgres" do
   adapter :custom do
-    commands "pg_dumpall > :tmp_path/postgresql_dump.sql"
-
+    commands ["pg_dumpall > :tmp_path/postgresql_dump.sql", "cp /var/log/postgresql/* > :tmp_path/"]
+														
 		storage :s3 do
 	    access_key_id     '<%= node[:db_backup][:s3_access_key_id]%>'
 	    secret_access_key '<%= node[:db_backup][:s3_secret_access_key]%>'
