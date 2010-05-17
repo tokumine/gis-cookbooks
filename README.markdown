@@ -7,7 +7,7 @@ Ubuntu 10.04 GIS (and Ruby/web) chef cookbooks
 
 Full box setup for:
 
-* web.json - REE rack box (REE, nginx, passenger, postgres connectors & sinatra)
+* web.json - rack box (REE, nginx, passenger, postgres connectors & sinatra)
 * database.json - PostGIS 1.4 box (REE, postgis 1.4, postgres 8.4, tuned postgres, GIS template, nightly backups to S3)
 * starspan.json - starspan rack box (REE, nginx, passenger, sinatra, gdal, geos & starspan)
 
