@@ -45,7 +45,7 @@ cd /tmp/gis-cookbooks
 # kick off various different server configs depending on the server
 # replace .json with the type of server you want to make
 #
-# database.json 		- configure as a postGIS 1.5.1 box
+# database.json 		- configure as a postGIS 1.4 box
 # web.json					- configure as a nginx+REE box
 # utility.json			- configure sphinx and memcached
 # starspan.json			- configure starspan
