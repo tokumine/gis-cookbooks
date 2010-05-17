@@ -30,7 +30,7 @@ Make a 50GB EBS instance:
 Notes
 ------
 * Takes ~5-10 mins to build. **Make tea, not emails**
-* WWW the server URL to see the chef log (eventually).
+* WWW the server URL to see the chef log (or htop or tail -f /var/log/chef.log)
 
 Todo
 -----
