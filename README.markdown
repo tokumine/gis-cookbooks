@@ -37,8 +37,8 @@ Todo
 * Amazon load balancer and join pool
 * monitoring (nagios/monit/bluepill?)
 
-Thanks to
-----------
+Thanks
+-------
 * United Nations Environment Programme World Conservation Monitoring Centre
 * Vizzuality
 * jsierles 37s_cookbooks (http://github.com/37signals/37s_cookbooks)
