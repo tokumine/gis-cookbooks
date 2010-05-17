@@ -32,7 +32,7 @@ template "/etc/memcached.conf" do
   owner "root"
   group "root"  
 	variables(
-		:ram_mb => memory / 1024 / 1024
+		:ram_mb => memory / 1024 / 1024,
 		:memcached_mb => (memory / 1024 / 1024) / 8 #NOT USED YET
 	)
 end
