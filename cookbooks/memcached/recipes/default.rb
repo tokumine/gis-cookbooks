@@ -24,3 +24,15 @@ service "memcached" do
   action :stop
 end
 
+memory = `cat /proc/meminfo | grep "MemTotal"`.match(/\d+/).to_s.to_i * 1024
+
+template "/etc/memcached.conf" do
+  source "memcached.conf.erb"
+  mode 0755
+  owner "root"
+  group "root"  
+	variables(
+		:ram_mb => memory / 1024 / 1024
+		:memcached_mb => (memory / 1024 / 1024) / 8 #NOT USED YET
+	)
+end
