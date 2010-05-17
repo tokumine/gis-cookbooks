@@ -1,20 +1,14 @@
 Ubuntu 10.04 GIS (and Ruby/web) chef cookbooks
 ==============================================
 
-Has cookbooks for
+**Cookbooks in /cookbooks**
+**Server config JSON in /server**
 
-* Ruby 1.8.7/gems/sinatra
-* nginx 0.8.36 + Passenger
-* GDal
-* GEOS
-* StarSpan
-* emacs
-
-Currently has full box setup for:
+Full box setup for:
 
 * web.json - normal rack box (REE, nginx, passenger, postgres connectors & sinatra)
-* starspan.json - starspan rack box (gdal, geos, starspan, REE, nginx, passenger & sinatra)
 * database.json - PostGIS 1.4 box (REE, postgis 1.4, postgres 8.4, tuned postgres, GIS template, nightly backups to S3)
+* starspan.json - starspan rack box (REE, nginx, passenger, sinatra, gdal, geos & starspan)
 
 How to use with AWS?
 ---------------------
