@@ -18,3 +18,10 @@
 #
 
 package "memcached"
+
+service "memcached" do
+  supports :status => true, :restart => true, :reload => true  
+  notifies :stop, resources(:service => "memcached")  , :immediately
+end
+
+

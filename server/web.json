@@ -1,4 +1,4 @@
 {
 	"user": "root",
-	"recipes": [ "passenger", "postgres_client", "sinatra", "emacs" ]
+	"recipes": [ "passenger", "postgres_client", "sinatra", "emacs", 'sphinx', 'memcached' ]
 }
