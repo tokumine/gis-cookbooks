@@ -23,7 +23,7 @@ Edit the last line of boot.sh to pick the server type & paste it into the **User
 
 How to use with EC2 API tools?
 --------------------------------
-You can make a 50GB EBS instance by:
+Make a 50GB EBS instance:
 
     ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k my_key -g [my_sec_group]
 
