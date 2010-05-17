@@ -1,9 +1,11 @@
 Ubuntu 10.04 GIS (and Ruby/web) chef cookbooks
 ==============================================
 
-Aim
-----
-Make deploying Ruby/GIS apps simple and backed up. 
+Make deploying Ruby/GIS apps simple and backed up on AWS. 
+
+1. Targets **ubuntu 10.04 EBS**. (tested 32bit AMI: **ami-714ba518**. 64bit should be ok)
+2. Designed for **Chef Solo**. Nothing fancy. Simple.
+3. Uses debs where possible
 
 What can it build?
 ------------------
@@ -12,10 +14,6 @@ What can it build?
 * database.json - PostGIS 1.4 box (REE, postgis 1.4, postgres 8.4, tuned postgres, GIS template, nightly backups to S3)
 * utility.json - Memcached and Sphinx ready for indexing as a remote search index
 * starspan.json - starspan rack box (REE, nginx, passenger, sinatra, gdal, geos & starspan)
-
-1. Targets **ubuntu 10.04 EBS**. (tested 32bit AMI: **ami-714ba518**. 64bit should be ok) 
-2. Designed for **Chef Solo**. Nothing fancy. Simple.
-3. Uses debs where possible
 
 **found in /server**
 
