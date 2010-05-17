@@ -16,3 +16,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+
+# Dev libraries for postgres 8.4
+package "postgresql-server-dev-8.4"
+
+# Sphinx 0.9.9
+remote_file "download sphinx" do
+  path "/tmp/sphinx-0.9.9.tar.gz"
+  source "http://sphinxsearch.com/downloads/sphinx-0.9.9.tar.gz"
+end 
+ 
+ # remove with dpkg -r sphinx
+bash "install sphinx" do
+  user "root"
+  cwd "/tmp"
+  code <<-EOH    
+  tar zxvf sphinx-0.9.9.tar.gz
+  cd /tmp/sphinx-0.9.9
+  ./configure --with-pgsql --without-mysql
+  make
+  checkinstall --pkgname sphinx --pkgversion 0.9.9-src --default 
+  EOH
+  only_if { `which searchd`.empty?}
+end
