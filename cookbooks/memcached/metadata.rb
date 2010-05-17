@@ -1,6 +1,6 @@
 maintainer       "ProtectedPlanet.net"
 maintainer_email "ops@protectedplanet.net"
 license          "Apache 2.0"
-description      "Installs/Configures memcached_server"
+description      "Installs/Configures memcached"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.1"

@@ -47,38 +47,35 @@
 #   http://wiki.github.com/meskyanichi/backup/configuration-file
 
 
-# Notifier
-#   Uncomment this if you want to enable notification by email on successful backup runs
-#   You will also have to set "notify true" inside each backup block below to enable it for that particular backup
- notifier_settings do
-   
-   to    "<%= node[:db_backup][:notification_email]%>"
-   from  "db_backup@<%= node[:db_backup][:hostname]%>"
-   
-   smtp do
-     host            "localhost"
-     port            "25"
-#     username        "example1@gmail.com"
-#     password        "example1password"
-#     authentication  "plain"
-#     domain          "localhost.localdomain"
-#     tls             true
-   end 
- end
+# EMAIL NOTIFICATION
+notifier_settings do
+	to    "<%= node[:db_backup][:notification_email]%>"
+	from  "db_backup@<%= node[:db_backup][:hostname]%>"
+  smtp do
+    host            "localhost"
+    port            "25"
+    username        nil
+    password        nil
+    authentication  nil
+    domain          "protectedplanet.net"
+    tls             false
+  end
+end
 
+
+# ACTUAL BACKUP - POSTGRESQL AND LOGS
 backup "postgres" do
   adapter :custom do
-    commands ["pg_dumpall > :tmp_path/postgresql_dump.sql", "cp /var/log/postgresql/* > :tmp_path/"]
-														
-		storage :s3 do
-	    access_key_id     '<%= node[:db_backup][:s3_access_key_id]%>'
-	    secret_access_key '<%= node[:db_backup][:s3_secret_access_key]%>'
-	    bucket            '<%= node[:db_backup][:s3_bucket]%>'
-	    use_ssl           true
-	  end
-
-	  keep_backups <%= node[:db_backup][:keep_backups_for]%>
-	  notify <%= node[:db_backup][:send_notification]%>
-
+    commands ["pg_dumpall -U postgres > :tmp_path/postgresql_dump.sql", "cp /var/log/postgresql/* :tmp_path/"]
   end
+
+  storage :s3 do
+	  access_key_id     '<%= node[:db_backup][:s3_access_key_id]%>'
+    secret_access_key '<%= node[:db_backup][:s3_secret_access_key]%>'
+    bucket            '<%= node[:db_backup][:s3_bucket]%>'
+    use_ssl           true
+  end
+
+  keep_backups <%= node[:db_backup][:keep_backups_for]%>
+  notify <%= node[:db_backup][:send_notification]%>
 end

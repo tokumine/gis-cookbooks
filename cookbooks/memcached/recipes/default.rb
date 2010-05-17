@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: memcached_client
+# Cookbook Name:: memcached
 # Recipe:: default
 #
 # Copyright 2010, ProtectedPlanet.net
@@ -16,3 +16,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+package "memcached"

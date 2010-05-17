@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: memcached_server
+# Cookbook Name:: sphinx
 # Recipe:: default
 #
 # Copyright 2010, ProtectedPlanet.net

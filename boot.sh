@@ -15,8 +15,6 @@ set -e -x
 # resize disk to the size set in init line (see comments above)
 resize2fs /dev/sda1
 
-
-
 # Add Brightbox APT repository
 wget http://apt.brightbox.net/release.asc -O - | sudo apt-key add -
 
@@ -56,4 +54,4 @@ cd /tmp/gis-cookbooks
 # starspan.json			- configure starspan
 # loadbalancer.json	- TBD
 #
-/usr/bin/chef-solo -c config/solo.rb -j server/database.json >> /var/log/chef.log
+/usr/bin/chef-solo -c config/solo.rb -j server/web.json >> /var/log/chef.log
