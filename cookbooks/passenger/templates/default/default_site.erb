@@ -3,7 +3,28 @@ server {
   server_name  localhost;
 
   access_log  <%= @node[:nginx][:log_dir] %>/localhost.access.log;
-	root <%= @node[:web][:dir] %>/<%= @node[:web][:default_site] %>/public;
+	root <%= @node[:web][:dir] %>/<%= @node[:web][:default_site] %>/current/public;
   passenger_enabled on;	
 	rails_env <%= @node[:passenger][:rails_env]%>;
+	
+	
+	# serve static files without running more rewrite tests                                                                                                                 
+  if (-f $request_filename) {
+    break;
+  }
+  # redirect server error pages to the static page /50x.html                                                                                                              
+  #                                                                                                                                                                       
+  error_page   500 502 503 504  /50x.html;
+  location = /50x.html {
+      root   html;
+  }
+  # disable site via capistrano (cap deploy:web:disable)                                                                                                                  
+  if (-f $document_root/system/maintenance.html) {
+     rewrite ^(.*)$ /system/maintenance.html break;
+  }
+  # expires headers                                                                                                                                                       
+  location ~* \.(ico|css|js|gif|jp?g|png)(\?[0-9]+)?$ {
+           expires max;
+           break;
+  }
 }       
