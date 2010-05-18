@@ -85,7 +85,7 @@ directory "/var/lib/nginx" do
   mode "0755"
   action :create
   not_if "test -d /var/lib/nginx"
-  notifies :start, resources(:service => "nginx"), :immediatley 
+  notifies :start, resources(:service => "nginx"), :immediate 
 end
 
 #CREATE THE CONF.D DIRECTORY
@@ -217,5 +217,5 @@ end
 #ENABLE THE SITE
 execute "enable the default site" do
  command "nxensite #{node[:web][:default_site]}"
- notifies :restart, resources(:service => "nginx"), :immediatley 
+ notifies :restart, resources(:service => "nginx"), :immediate 
 end
