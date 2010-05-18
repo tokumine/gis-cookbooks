@@ -192,7 +192,7 @@ end
 
 #ADD BASIC SITE
 template node[:nginx][:dir] + "/sites-available/#{node[:web][:default_site]}" do
-  source "#{node[:web][:default_site]}.erb"
+  source "default_site.erb"
   owner "root"
   group "root"
   mode 0755
