@@ -127,9 +127,9 @@ end
 end
 
 #CREATE NGINX USER
-execute "add nginx user" do
-  command "adduser --system --no-create-home --disabled-login --disabled-password --group #{node[:nginx][:user]}"
-end
+#execute "add nginx user" do
+#  command "adduser --system --no-create-home --disabled-login --disabled-password --group #{node[:nginx][:user]}"
+#end
 
 #SETUP NGINX CONF FILE
 template "nginx.conf" do

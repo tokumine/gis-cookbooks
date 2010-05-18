@@ -51,4 +51,4 @@ cd /tmp/gis-cookbooks
 # starspan.json			- configure starspan
 # full_stack.json   - database.json + web.json + utility.json
 #
-/usr/bin/chef-solo -c config/solo.rb -j server/database.json >> /var/log/chef.log
+/usr/bin/chef-solo -c config/solo.rb -j server/web.json >> /var/log/chef.log
