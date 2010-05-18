@@ -85,7 +85,7 @@ directory "/var/lib/nginx" do
   mode "0755"
   action :create
   not_if "test -d /var/lib/nginx"
-  notifies :start, resources(:service => "nginx")
+  notifies :start, resources(:service => "nginx"), :immediatley 
 end
 
 #CREATE THE CONF.D DIRECTORY
@@ -160,7 +160,6 @@ template node[:nginx][:conf_dir] + "/passenger.conf" do
   owner "root"
   group "root"
   mode 0755
-  notifies :restart, resources(:service => "nginx")
 end
 
 #PREP BASIC WWW LOCATION
@@ -213,11 +212,10 @@ template "#{default_site}/public/app.rb" do
   owner node[:nginx][:user]
   owner node[:nginx][:user]
   mode 0755
-  notifies :restart, resources(:service => "nginx")
 end
 
 #ENABLE THE SITE
 execute "enable the default site" do
  command "nxensite #{node[:web][:default_site]}"
- notifies :restart, resources(:service => "nginx")
+ notifies :restart, resources(:service => "nginx"), :immediatley 
 end
