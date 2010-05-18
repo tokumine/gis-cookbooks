@@ -41,7 +41,7 @@ bash "install sphinx" do
   only_if { `which searchd`.empty?}
 end
 
-gem_package "thinking_sphinx" do
+gem_package "thinking-sphinx" do
   action :install
   version "1.3.16"
 end
