@@ -3,6 +3,7 @@ server {
   server_name  localhost;
 
   access_log  <%= @node[:nginx][:log_dir] %>/localhost.access.log;
-	root <%= @node[:web][:dir] %>/<%= @node[:web][:vhosts] %>/<%= @node[:web][:default_site] %>/public;
+	root <%= @node[:web][:dir] %>/<%= @node[:web][:default_site] %>/public;
   passenger_enabled on;	
+	rails_env <%= @node[:passenger][:rails_env]%>;
 }       

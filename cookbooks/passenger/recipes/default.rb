@@ -164,7 +164,7 @@ template node[:nginx][:conf_dir] + "/passenger.conf" do
 end
 
 #PREP BASIC WWW LOCATION
-default_site = "#{node[:web][:dir]}/#{node[:web][:vhosts]}/#{node[:web][:default_site]}"
+default_site = "#{node[:web][:dir]}/#{node[:web][:default_site]}"
 directory default_site do
   mode 0755
   owner node[:nginx][:user]

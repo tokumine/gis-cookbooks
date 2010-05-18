@@ -35,7 +35,7 @@ Notes
 Todo
 -----
 * Amazon load balancer and join pool
-* monitoring (nagios/monit/bluepill?)
+* monitoring (daemontools/nagios/monit/bluepill?)
 
 Thanks
 -------

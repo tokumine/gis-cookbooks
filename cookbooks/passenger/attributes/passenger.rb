@@ -8,8 +8,8 @@ default.passenger[:rails_env] = "production"
 
 default.nginx[:dir]     = "/etc/nginx"
 default.nginx[:log_dir] = "/var/log/nginx"
-default.nginx[:user]    = "nginx"
-default.nginx[:group]   = "nginx"
+default.nginx[:user]    = "ubuntu"
+default.nginx[:group]   = "ubuntu"
 default.nginx[:binary]  = "/usr/sbin/nginx"
 default.nginx[:gzip_types] = [ "text/plain", "text/css", "application/javascript", "application/x-javascript", "text/xml", "application/xml", "application/xml+rss", "text/javascript" ]
 default.nginx[:version] = "0.8.36"
@@ -33,6 +33,5 @@ default.nginx[:worker_connections] = 2048
 default.nginx[:server_names_hash_bucket_size] = 128
 default.nginx[:conf_dir] = nginx[:dir] + "/conf.d"
 
-default.web[:dir] = "/var/www"
-default.web[:vhosts] = "vhosts"
-default.web[:default_site] = "default_site"
+default.web[:dir] = "/home/ubuntu/www"
+default.web[:default_site] = "ppe"
