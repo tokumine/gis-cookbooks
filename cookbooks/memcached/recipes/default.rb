@@ -36,3 +36,8 @@ template "/etc/memcached.conf" do
 		:memcached_mb => (memory / 1024 / 1024) / 8 #NOT USED YET
 	)
 end
+
+gem_package "memcache-client" do
+  action :install
+  version "1.8.3"
+end

@@ -40,3 +40,8 @@ bash "install sphinx" do
   EOH
   only_if { `which searchd`.empty?}
 end
+
+gem_package "thinking_sphinx" do
+  action :install
+  version "1.3.16"
+end

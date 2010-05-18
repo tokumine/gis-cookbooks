@@ -26,6 +26,12 @@ package "libxslt1.1"
 package "libxslt1-dev"
 
 
-gem_package "nokogiri"
-gem_package "oniguruma"
+gem_package "nokogiri" do
+  action :install
+  version "1.4.1"
+end
 
+gem_package "oniguruma" do
+  action :install
+  version "1.1.0"
+end
