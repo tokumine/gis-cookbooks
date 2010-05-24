@@ -35,3 +35,8 @@ gem_package "oniguruma" do
   action :install
   version "1.1.0"
 end
+
+gem_package "yajl-ruby" do
+  action :install
+  version '0.7.6'
+end
