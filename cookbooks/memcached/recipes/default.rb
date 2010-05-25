@@ -18,6 +18,9 @@
 #
 
 package "memcached"
+package "libsasl2-dev"
+package "libmemcached-dev" 
+package "libmemcached-dbg"
 
 service "memcached" do
   supports :status => true, :restart => true, :reload => true  
@@ -40,4 +43,9 @@ end
 gem_package "memcache-client" do
   action :install
   version "1.8.3"
+end
+
+gem_package "memcached" do
+  action :install
+  version "0.19.5"
 end

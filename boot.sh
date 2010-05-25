@@ -22,7 +22,7 @@ apt-get update
 #apt-get -y --force-yes upgrade # <--- not working due to some upgrades needing console input...
 
 # install basic packages
-apt-get -y install htop build-essential wget ssl-cert git-core xfsprogs libreadline5-dev checkinstall libruby1.8 ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb 
+apt-get -y install htop build-essential wget ssl-cert git-core xfsprogs libreadline5-dev checkinstall libruby1.8 ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb
 
 # compile rubygems from source
 cd /tmp
@@ -36,7 +36,7 @@ ln -sfv /usr/bin/gem1.8 /usr/bin/gem
 gem sources -a http://gems.opscode.com
 gem install ohai --version "0.5.4" --no-rdoc --no-ri
 gem install chef --version "0.8.16" --no-rdoc --no-ri
- 
+  
 # clone tokumine chef repo
 cd /tmp
 git clone http://github.com/tokumine/gis-cookbooks.git
@@ -47,7 +47,7 @@ cd /tmp/gis-cookbooks
 #
 # database.json 		- configure as a postGIS 1.4 box
 # web.json					- configure as a nginx+REE box
-# utility.json			- configure sphinx and memcached
+# utility.json			- configure sphinx
 # starspan.json			- configure starspan
 # full_stack.json   - database.json + web.json + utility.json
 #

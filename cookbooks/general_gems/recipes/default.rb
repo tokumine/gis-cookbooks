@@ -40,3 +40,34 @@ gem_package "yajl-ruby" do
   action :install
   version '0.7.6'
 end
+
+gem_package "rake" do
+  action :install
+  version '0.8.7'
+end
+
+gem_package "rack" do
+  action :install
+  version '1.0.1'
+end
+
+gem_package "rack" do
+  action :install
+  version '1.1.0'
+end
+
+gem_package "riddle" do
+  action :install
+  version '1.0.10'
+end
+
+gem_package "rails" do
+  action :install
+  version '2.3.8'
+end
+
+gem_package "SystemTimer"
+gem_package "macaddr"
+gem_package "bson"
+gem_package "after_commit"
+gem_package "rcov"
