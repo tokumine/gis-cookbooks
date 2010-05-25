@@ -23,9 +23,9 @@ Edit the last line of boot.sh to pick the server type & paste it all (boot.sh) i
 
 How to use with EC2 API tools?
 --------------------------------
-Make a 50GB EBS instance:
+Make a 50GB EBS instance in us-east-1a:
 
-    $ ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k my_key -g [my_sec_group]
+    $ ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k my_key -g [my_sec_group] -z us-east-1a
 
 Notes
 ------

@@ -5,7 +5,7 @@ set -e -x
 #
 # Run using the AWS EC2 API tools:
 #  
-# ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k ppekey -g default -g ppeutility
+# ec2-run-instances --block-device-mapping /dev/sda1=:50 ami-714ba518 -f boot.sh -k ppekey -g default -g ppeutility -z us-east-1a
 # (50gb EBS server. Assumes EC2_PRIVATE_KEY and EC2_CERT are set)
 
 # resize EBS
@@ -51,4 +51,4 @@ cd /tmp/gis-cookbooks
 # starspan.json			- configure starspan
 # full_stack.json   - database.json + web.json + utility.json
 #
-/usr/bin/chef-solo -c config/solo.rb -j server/web.json >> /var/log/chef.log
+/usr/bin/chef-solo -c config/solo.rb -j server/utility.json >> /var/log/chef.log
