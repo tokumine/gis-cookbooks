@@ -21,9 +21,6 @@ include_recipe 'postfix'
 gem_package "backup" do
   action :install
   version "2.3.1"
-  log "[BACKUPS] configure backups in /opt/backup/config/backup.rb"
-  log "[BACKUPS] See http://wiki.github.com/meskyanichi/backup/getting-started-unix"
-  log "[BACKUPS] Postgres scheduled to backup to S3 at 1am daily"  
   not_if { File.exists? "/opt/backup/config/backup.rb"}
 end
 
@@ -41,6 +38,9 @@ cron "backup postgres" do
   command "backup --run postgres"
 end
 
+log "[BACKUPS] configure backups in /opt/backup/config/backup.rb"
+log "[BACKUPS] See http://wiki.github.com/meskyanichi/backup/getting-started-unix"
+log "[BACKUPS] Postgres scheduled to backup to S3 at 1am daily"  
 
 
 
