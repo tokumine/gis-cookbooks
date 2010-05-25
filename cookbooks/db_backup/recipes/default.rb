@@ -33,6 +33,7 @@ end
 
 cron "backup postgres" do
   hour "1"
+  minute "20"
   command "backup --run postgres"
 end
 
