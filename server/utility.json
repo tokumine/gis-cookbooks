@@ -1,4 +1,4 @@
 {
 	"user": "root",
-	"recipes": [ "sphinx", "memcached",  "general_gems", "emacs" ]
+	"recipes": [ "sphinx", "general_gems", "emacs" ]
 }
