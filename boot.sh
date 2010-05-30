@@ -18,8 +18,8 @@ wget http://apt.brightbox.net/release.asc -O - | sudo apt-key add -
 echo 'deb http://apt.brightbox.net/ lucid rubyee' > /etc/apt/sources.list.d/brightbox-rubyee.list
 
 # update apt
-apt-get update
-#apt-get -y --force-yes upgrade # <--- not working due to some upgrades needing console input...
+aptitude -y update
+aptitude -y safe-upgrade
 
 # install basic packages
 apt-get -y install htop build-essential wget ssl-cert git-core xfsprogs libreadline5-dev checkinstall libruby1.8 ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb

@@ -24,6 +24,7 @@ package "libxml2"
 package "libxml2-dev"
 package "libxslt1.1"
 package "libxslt1-dev"
+package "libcurl4-gnutls-dev"
 
 
 gem_package "nokogiri" do
@@ -66,8 +67,48 @@ gem_package "rails" do
   version '2.3.8'
 end
 
-gem_package "SystemTimer"
-gem_package "macaddr"
-gem_package "bson"
-gem_package "after_commit"
-gem_package "rcov"
+gem_package "SystemTimer" do
+  action :install
+  version '1.2'
+end
+
+gem_package "macaddr" do
+  action :install
+  version '1.0.0'
+end
+
+gem_package "bson" do
+  action :install
+  version '1.0.1'
+end
+
+gem_package "after_commit" do
+  action :install
+  version '1.0.7'
+end
+
+gem_package "rcov" do
+  action :install
+  version '0.9.8'
+end
+
+gem_package "ppe-panoramio" do
+  action :install
+  version '2.3.8'
+end
+
+gem_package "ppe_api" do
+  action :install
+  version '2.3.8'
+end
+
+gem_package "aws-s3" do
+  action :install
+  version '0.6.2'
+end
+
+gem_package "bson_ext" do
+  action :install
+  version '1.0.1'
+end
+
