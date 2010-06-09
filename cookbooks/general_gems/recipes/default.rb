@@ -25,6 +25,7 @@ package "libxml2-dev"
 package "libxslt1.1"
 package "libxslt1-dev"
 package "libcurl4-gnutls-dev"
+package "unzip"
 
 
 gem_package "nokogiri" do

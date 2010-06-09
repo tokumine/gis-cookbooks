@@ -41,7 +41,7 @@ end
 
 # Expand memory that is available to postgres, good for postgres only boxes
 memory = `cat /proc/meminfo | grep "MemTotal"`.match(/\d+/).to_s.to_i * 1024
-shared_memory = memory / 3
+shared_memory = (memory / 1.5).floor
 current_shared_memory = File.read("/proc/sys/kernel/shmmax").to_i
 execute "setup-shmmax" do
   command "echo #{shared_memory} > /proc/sys/kernel/shmmax"

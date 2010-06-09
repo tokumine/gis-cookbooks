@@ -34,4 +34,4 @@ default.nginx[:server_names_hash_bucket_size] = 128
 default.nginx[:conf_dir] = nginx[:dir] + "/conf.d"
 
 default.web[:dir] = "/home/ubuntu/www"
-default.web[:default_site] = "ppe/current"
+default.web[:default_site] = "ppe"
