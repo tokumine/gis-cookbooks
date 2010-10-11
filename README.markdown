@@ -36,7 +36,6 @@ Todo
 -----
 * Amazon load balancer and join pool
 * monitoring (daemontools/nagios/monit/bluepill?)
-* pgtune
 
 Thanks
 -------
