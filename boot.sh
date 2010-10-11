@@ -17,6 +17,7 @@ set -e -x
 # WEB:  m2.xlarge/ami-6006f309/80GB  #<-- this will change in the future!
 # UTIL: c1.medium/ami-6c06f305/80GB
 #
+
 # resize EBS
 resize2fs /dev/sda1
 
