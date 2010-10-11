@@ -18,6 +18,7 @@
 #
 package "postgresql-8.4"
 package "postgresql-server-dev-8.4"
+package "pgtune"
 
 gem_package "pg" do
   action :install
@@ -60,4 +61,11 @@ template "/etc/postgresql/8.4/main/postgresql.conf" do
 	notifies :restart, resources(:service => "postgresql")  , :immediately
 end
 
+execute "run pg_tune" do
+  command "pgtune -i /etc/postgresql/8.4/main/postgresql.conf -T Web -o /etc/postgresql/8.4/main/postgresql.conf.pgtune && cp -f /etc/postgresql/8.4/main/postgresql.conf.pgtune /etc/postgresql/8.4/main/postgresql.conf"
+	notifies :restart, resources(:service => "postgresql")  , :immediately
+  not_if { File.exists? "/etc/postgresql/8.4/main/postgresql.conf.pgtune"}
+end
+
 log "[POSTGRESQL] Update the postgres users password. ***CURRENTLY EMPTY***"
+log "[POSTGRESQL] Run pgtune to get best out of box"
