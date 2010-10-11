@@ -1,0 +1,81 @@
+# Backup Configuration File
+# 
+# Use the "backup" block to add backup settings to the configuration file.
+# The argument before the "do" in (backup "argument" do) is called a "trigger".
+# This acts as the identifier for the configuration.
+#
+# In the example below we have a "mysql-backup-s3" trigger for the backup setting.
+# All the configuration is done inside this block. To initialize the backup process for this block,
+# you invoke it using the following command:
+#
+#   backup --run mysql-backup-s3
+# 
+# You can add as many backup block settings as you want, just be sure every trigger is unique and you can run
+# each of them separately.
+# 
+# ADAPTERS
+#  - MySQL
+#  - PostgreSQL
+#  - Archive
+#  - Custom
+#
+# STORAGE METHODS
+#  - S3 (Amazon)
+#  - SCP (Remote Server)
+#  - FTP (Remote Server)
+#  - SFTP (Remote Server)
+#
+# GLOBAL OPTIONS
+#  - Keep Backups (keep_backups)
+#  - Encrypt With Pasword (encrypt_with_password)
+#
+#  This is the "decrypt" command for all encrypted backups:
+#    sudo backup --decrypt /path/to/encrypted/file
+#
+# Each Backup Setting can contain:
+# - 1 Adapter
+# - 1 Storage Method
+# - Multiple Global Options
+#
+# The combination of these, however, do not matter! So experiment with it.
+# 
+# You can also let Backup notify you by email on successfully created backups.
+# - Just uncomment the block of code below (notifier_settings) and fill in your credentials.
+# - Then for set "notify" to "true" in each (backup) block you wish to be notified of.
+#
+# For more information on "Backup", please refer to the wiki on github
+#   http://wiki.github.com/meskyanichi/backup/configuration-file
+
+
+# EMAIL NOTIFICATION
+notifier_settings do
+	to    "<%= node[:db_backup][:notification_email]%>"
+	from  "db_backup@<%= node[:db_backup][:hostname]%>"
+  smtp do
+    host            "localhost"
+    port            "25"
+    username        nil
+    password        nil
+    authentication  nil
+    domain          "protectedplanet.net"
+    tls             false
+  end
+end
+
+
+# ACTUAL BACKUP - POSTGRESQL AND LOGS
+backup "postgres" do
+  adapter :custom do
+    commands ["pg_dumpall -U postgres > :tmp_path/postgresql_dump.sql", "cp /var/log/postgresql/* :tmp_path/"]
+  end
+
+  storage :s3 do
+	  access_key_id     '<%= node[:db_backup][:s3_access_key_id]%>'
+    secret_access_key '<%= node[:db_backup][:s3_secret_access_key]%>'
+    bucket            '<%= node[:db_backup][:s3_bucket]%>'
+    use_ssl           true
+  end
+
+  keep_backups <%= node[:db_backup][:keep_backups_for]%>
+  notify <%= node[:db_backup][:send_notification]%>
+end

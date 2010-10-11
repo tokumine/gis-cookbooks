@@ -1,0 +1,14 @@
+get '/' do
+	output = "<body style='margin:0;padding:0;background:#efecca;color:#235353;'><div style='margin:2em;font-family: helvetica arial;'> "
+  output << "<h1 style='font-family: arial;'>Server configuration finished</h1>
+  <div style='padding:1em;background:#e6e2af url(http://davepics.com/Album/Animals/xkcd.262.Captions-Cats.png) top right no-repeat;color:#7D7945;font-family:courier;font-size:\
+0.8em;'>
+  <p>You'll find this file at <b>/home/ubuntu/ppe/public/app.rb</b></p>
+  <p>edit me and then <b>/etc/init.d/nginx restart</b></p>
+  <h3>Chef log</h3>
+  "
+  chef_log = File.open('/var/log/chef.log')
+  chef_log.each{|line| output << "#{line}</br>"}
+  output << "</div></div></body>"
+  output
+end

@@ -1,0 +1,1 @@
+default.memcached[:size]    = "64"

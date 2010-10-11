@@ -1,0 +1,13 @@
+/var/log/nginx/*.log {
+    daily
+    missingok
+    compress
+    rotate 60
+    dateext
+    notifempty
+    sharedscripts
+    extension gz
+    postrotate
+        /etc/init.d/nginx restart
+    endscript
+}

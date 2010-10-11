@@ -1,0 +1,4 @@
+{
+	"user": "root",
+	"recipes": [ "sphinx", "postgres_client", "general_gems", "emacs", "postgis", "postfix"]
+}
