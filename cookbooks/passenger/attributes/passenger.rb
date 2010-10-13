@@ -1,6 +1,7 @@
-default.passenger[:nginx][:passenger_version] = "2.2.11"
-default.passenger[:nginx][:nginx_version] = "0.8.36"
-default.passenger[:root_path] = "/usr/lib/ruby/gems/1.8/gems/passenger-2.2.11" 
+default.passenger[:nginx][:passenger_version] = "3.0.0.pre4"
+default.passenger[:nginx][:nginx_version] = "0.8.52"
+#http://sysoev.ru/nginx/nginx-0.8.52.tar.gz
+default.passenger[:root_path] = "/usr/lib/ruby/gems/1.8/gems/passenger-3.0.0.pre4" 
 #default.passenger[:root_path] = "/usr/local/lib/ruby/gems/1.8/gems/passenger-2.2.11" 
 default.passenger[:passenger_ruby] = "/usr/bin/ruby" 
 
@@ -12,7 +13,7 @@ default.nginx[:user]    = "ubuntu"
 default.nginx[:group]   = "ubuntu"
 default.nginx[:binary]  = "/usr/sbin/nginx"
 default.nginx[:gzip_types] = [ "text/plain", "text/css", "application/javascript", "application/x-javascript", "text/xml", "application/xml", "application/xml+rss", "text/javascript", "application/json" ]
-default.nginx[:version] = "0.8.36"
+default.nginx[:version] = "0.8.52"
 default.nginx[:expires][:enabled] = true
 default.nginx[:expires][:regex] = '^/(javascripts|stylesheets|images|sprockets)[/\.]'
 default.nginx[:expires][:time] = "max"

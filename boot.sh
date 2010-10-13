@@ -39,7 +39,7 @@ echo 'deb http://apt.brightbox.net/ lucid rubyee' > /etc/apt/sources.list.d/brig
 
 # update apt
 aptitude -y update
-#aptitude -y safe-upgrade
+aptitude -y safe-upgrade
 
 # install basic packages
 apt-get -y install htop build-essential wget ssl-cert git-core xfsprogs libreadline5-dev checkinstall libruby1.8 ruby ruby1.8-dev libopenssl-ruby1.8 rdoc ri irb
