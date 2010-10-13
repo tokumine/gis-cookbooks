@@ -6,7 +6,7 @@ set -e -x
 # Run using the AWS EC2 API tools:
 #  
 # DB
-# ec2-run-instances --block-device-mapping /dev/sda1=:150 ami-6006f309 -f boot.sh -k ppekey -g default -g ppeutility -z us-east-1a -m -t m2.xlarge
+# ec2-run-instances --block-device-mapping /dev/sda1=:150 ami-6c06f305 -f boot.sh -k ppekey -g default -g ppeutility -z us-east-1a -m -t c1.medium
 #
 # WEB
 # ec2-run-instances --block-device-mapping /dev/sda1=:80 ami-6006f309 -f boot.sh -k ppekey -g default -g ppeutility -z us-east-1a -m -t m2.xlarge
@@ -21,7 +21,7 @@ set -e -x
 # in ppe production, we run:
 #
 # DB:   m2.xlarge/ami-6006f309/150GB
-# WEB:  m2.xlarge/ami-6006f309/80GB  #<-- this will change in the future!
+# WEB:  c1.medium/ami-6c06f305/80GB  #<-- this will change in the future!
 # UTIL: c1.medium/ami-6c06f305/80GB
 #
 
@@ -71,4 +71,4 @@ cd /tmp/gis-cookbooks
 # starspan.json			- configure starspan
 # full_stack.json   - database.json + web.json + utility.json
 #
-/usr/bin/chef-solo -c config/solo.rb -j server/utility.json >> /var/log/chef.log
+/usr/bin/chef-solo -c config/solo.rb -j server/web.json >> /var/log/chef.log
